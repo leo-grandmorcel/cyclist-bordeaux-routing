@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="/js/autopost.js"></script>
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cyclist Routing</title>
+  </head>
+  <body>
+    <div id="header">
+      <h1 class="lobster-regular">Cyclist Routing</h1>
+    </div>
+    <main>
+      <form id="formItineraire">
+        <h3 class="lobster-regular">Create an itineraire :</h3>
+        <div>
+          <label for="depart">From :</label>
+          <input name="depart" type="text" value="" id="depart" />
+        </div>
+        <div>
+          <label for="destination">To :</label>
+          <input name="destination" type="text" value="" id="destination" />
+        </div>
+
+        <input class="submit" type="submit" value="Submit" />
+      </form>
+      <script src="/js/test.js"></script>
+      <div id="map_base">{% block content %} {% endblock %}</div>
+    </main>
+  </body>
+</html>
