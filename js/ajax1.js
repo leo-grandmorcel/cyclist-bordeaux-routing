@@ -1,4 +1,6 @@
 function getitineraire_coo(marqeurs) {
+  document.body.classList.add("loading");
+  document.querySelector(".overlay").style.display = "block";
   var depart = [marqeurs[0].getLatLng().lat, marqeurs[0].getLatLng().lng];
   var destination = [marqeurs[1].getLatLng().lat, marqeurs[1].getLatLng().lng];
   $.ajax({
@@ -8,6 +10,8 @@ function getitineraire_coo(marqeurs) {
     data: JSON.stringify({ depart: depart, destination: destination }),
     success: function (data) {
       $("#map_base").html(data.map);
+      document.body.classList.remove("loading");
+      document.querySelector(".overlay").style.display = "none";
     },
   });
 }

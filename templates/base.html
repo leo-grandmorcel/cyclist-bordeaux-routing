@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="/js/autopost.js"></script>
+    <script src="/js/ajax1.js"></script>
     <link rel="stylesheet" href="/static/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +14,7 @@
     <title>Cyclist Routing</title>
   </head>
   <body>
+    <div class="overlay"></div>
     <div id="header">
       <h1 class="lobster-regular">Cyclist Routing</h1>
     </div>
@@ -31,7 +32,7 @@
 
         <input class="submit" type="submit" value="Submit" />
       </form>
-      <script src="/js/test.js"></script>
+      <script src="/js/ajax2.js"></script>
       <div id="map_base">{% block content %} {% endblock %}</div>
     </main>
   </body>

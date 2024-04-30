@@ -56,3 +56,7 @@ uvicorn main:app
 HTML, CSS, JavaScript: Frontend development.
 AJAX: Asynchronous communication with the server for route calculation.
 Backend: Python with dijkstra algorithm
+
+# Rendering
+
+![Render](/static/render.png)

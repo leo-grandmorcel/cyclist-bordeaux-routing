@@ -2,6 +2,8 @@ document
   .getElementById("formItineraire")
   .addEventListener("submit", function (event) {
     event.preventDefault();
+    document.body.classList.add("loading");
+    document.querySelector(".overlay").style.display = "block";
     var formData = new FormData(this);
     $.ajax({
       type: "POST",
@@ -13,6 +15,8 @@ document
       }),
       success: function (data) {
         $("#map_base").html(data.map);
+        document.body.classList.remove("loading");
+        document.querySelector(".overlay").style.display = "none";
       },
     });
   });

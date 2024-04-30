@@ -174,7 +174,10 @@ def render_map(m):
         left: 8rem;
         margin-top: 1rem;
         padding: 0.5rem;
-        border:2px solid grey; z-index:9999; font-size:14px;
+        border:2px solid grey; 
+        z-index:500; 
+        font-size:14px;
+        border-radius: 1.5rem;
         background-color:white;
         ">&nbsp; <b>Legend :</b><br>
         &nbsp;<i class="fa fa-map-marker fa-2x" style="color:blue"></i> Length &nbsp; <br>
