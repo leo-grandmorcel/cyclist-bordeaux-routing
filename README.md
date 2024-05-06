@@ -6,9 +6,9 @@ Cyclist Routing at Bordeaux is a web application designed to provide cyclists in
 
 ## Features:
 
-Route Calculation: Users can input their starting point and destination to receive a calculated route tailored for cyclists.
-Road Risk Assessment: The application evaluates the risk level of roads along the proposed route, helping cyclists make informed decisions about their journey.
-User-Friendly Interface: The app features an intuitive and easy-to-use interface, ensuring a seamless experience for all users.
+- Route Calculation: Users can input their starting point and destination to receive a calculated route tailored for cyclists.
+- Road Risk Assessment: The application evaluates the risk level of roads along the proposed route, helping cyclists make informed decisions about their journey.
+- User-Friendly Interface: The app features an intuitive and easy-to-use interface, ensuring a seamless experience for all users. They can either click on map to create marker and get the address of this marker or enter an address through the form.
 
 ## How to Use:
 
