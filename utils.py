@@ -93,6 +93,19 @@ def get_localisation(address):
     return response
 
 
+def get_address(lat, lon):
+    response = (
+        requests.get(f"https://api-adresse.data.gouv.fr/reverse/?lon={lon}&lat={lat}")
+        .json()
+        .get("features")
+    )
+    try:
+        response = response[0].get("properties").get("label")
+    except:
+        raise ValueError("Address not found")
+    return response
+
+
 def find_popup_slice(html):
     """
     Find the starting and edning index of popup function
@@ -142,30 +155,43 @@ def find_popup_variable_name(html):
 
 
 def custom_code(map_variable_name):
-    return """
+    return f"""
             // custom code
             var marqueurs = [];
-            function latLngPop(e) {
-                if (marqueurs.length >= 2){
+            var popups = [];
+            function latLngPop(e) {{
+                if (marqueurs.length >= 2){{
                     var marqueurASupprimer = marqueurs.shift();
+                    var popupASupprimer = popups.shift();
                     marqueurASupprimer.remove();
-                }
-                var marqueur = L.marker([e.latlng.lat, e.latlng.lng],{}).addTo(%s);
+                    popupASupprimer.remove();
+                }}
+                var marqueur = L.marker([e.latlng.lat, e.latlng.lng],{{}}).addTo({map_variable_name});
+     
+                var popup = L.popup()
+                getaddress_coo(e.latlng.lat, e.latlng.lng).then((address) => {{
+                    var html = $(`<div id="random_popup" style="width: 100%; height: 100%;">${{address}}</div>`)[0];
+                    popup.setContent(html);
+                }});
+                marqueur.bindPopup(popup);
+                
                 marqueurs.push(marqueur);
+                popups.push(popup);
+                
                 var boutonItineraire = document.getElementById('boutonItineraire');
-                if (!boutonItineraire && marqueurs.length == 2) {
+                if (!boutonItineraire && marqueurs.length == 2) {{
                     boutonItineraire = document.createElement('button');
                     boutonItineraire.id = 'boutonItineraire';
                     boutonItineraire.innerHTML = 'Calculate the route';
-                    boutonItineraire.addEventListener('click', function() {
+                    boutonItineraire.addEventListener('click', function() {{
                         getitineraire_coo(marqueurs);
-                    });
+                    }});
                     var map_base = document.getElementById('map_base');
                     map_base.appendChild(boutonItineraire);
-                }
-            }
+                }}
+            }}
             // end custom code
-    """ % (map_variable_name)
+    """
 
 
 def render_map(m):

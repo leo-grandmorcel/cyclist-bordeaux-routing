@@ -15,3 +15,13 @@ function getitineraire_coo(marqeurs) {
     },
   });
 }
+
+async function getaddress_coo(latitude, longitude) {
+  return fetch(
+    `http://127.0.0.1:8000/address?latitude=${latitude}&longitude=${longitude}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      return data;
+    });
+}

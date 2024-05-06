@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from utils import get_localisation, render_map, get_graph
+from utils import get_localisation, render_map, get_graph, get_address
 
 GRAPH = get_graph()
 # GRAPH = None
@@ -123,12 +123,18 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     m = folium.Map(location=[44.841225, -0.580036], zoom_start=12)
-    folium_html = render_map(m)
     return templates.TemplateResponse(
         request=request,
         name="map.html",
-        context={"map": folium_html},
+        context={"map": render_map(m)},
     )
+
+
+@app.get("/address")
+async def address(request: Request):
+    longitude = request.query_params.get("longitude")
+    latitude = request.query_params.get("latitude")
+    return get_address(latitude, longitude)
 
 
 @app.post("/iti_coordinate")
