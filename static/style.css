@@ -71,8 +71,8 @@ main {
   margin-bottom: 2rem;
   bottom: 0;
   right: 0;
-  width: 13vw;
-  height: 10vh;
+  width: 16vw;
+  height: 12vh;
   font-size: 4rem;
   border-bottom-right-radius: 2rem;
   border-top-left-radius: 2rem;
@@ -80,7 +80,7 @@ main {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  z-index: 500;
+  z-index: 9998;
   background-color: #e94f37;
   color: #f6f7eb;
 }
